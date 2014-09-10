@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="MobileOptimized" content="320"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" name="viewport" id="viewport" />
+<meta content="telephone=no" name="format-detection">
+<title>设置</title>
+<link rel="stylesheet"  href="js/jquery.mobile-1.2.0.min.css" />
+<script src="js/jquery.js"></script>
+<script src="js/jquery.mobile-1.2.0.min.js"></script>
+<script type="text/javascript">
+function checkVersion() {
+	window.bean.checkVersion();
+}
+
+function setInit() {
+	var jsonStr = window.bean.setInit();
+	var setValues = eval("(" + jsonStr + ")");
+	if(setValues.screenChange=='on') {
+		var objSelect = document.getElementById("flip-1");
+		for(var i=0;i<objSelect.options.length;i++) {
+			if(objSelect.options[i].value == 'on') {
+				objSelect.options[i].selected = true;
+				var myswitch = $("select#flip-1");
+				myswitch.slider("refresh");
+				break;
+			}
+		}
+	}
+}
+
+function screenChange() {
+	var objSelect = document.getElementById("flip-1");
+	if(objSelect.options[0].selected ==true) {
+		window.bean.screenChange('off');
+	} else {
+		window.bean.screenChange('on');
+	}
+}
+
+function about() {
+	alert("here");
+}
+</script>
+</head>
+<body onload="setInit()">
+	<div data-role="page">
+		<!-- 
+		<div data-role="header"><h1>设置</h1></div>
+		 -->
+		<div data-role="content">
+			<div data-role="fieldcontain">
+			<label for="name">是否允许横屏:</label>
+			<select name="flip-1" id="flip-1" data-role="slider" onchange="javascript:screenChange();">
+				<option value="off">Off</option>
+				<option value="on">On</option>
+			</select>
+			</div>
+			
+			<div data-role="controlgroup">
+				<a href="javascript:checkVersion();" data-role="button" data-icon="arrow-r" data-iconpos="right">检查更新</a>
+				<a href="#popupInfo" data-rel="popup" data-role="button" data-icon="arrow-r" data-iconpos="right">关于我们</a>
+				<a href="javascript:;" data-role="button" data-icon="arrow-r" data-iconpos="right">意见反馈</a>
+			</div>
+			<div data-role="popup" id="popupInfo" class="ui-content" data-theme="e" style="max-width:350px;">
+          		<p align="center"><strong>关于我们</strong><br/>联系电话：XXXXXXXXXXX<br/>网址：WWW.XXX.COM</p>
+			</div>
+		</div>
+		<!-- 
+		<div data-role="footer"><h4>footer</h4></div>
+		 -->
+	</div>
+	
+</body>
+</html>

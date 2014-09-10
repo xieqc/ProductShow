@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="MobileOptimized" content="320"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" name="viewport" id="viewport" />
+<meta content="telephone=no" name="format-detection">
+<title>产品展示</title>
+<link rel="stylesheet" type="text/css" href="js/swipe.css">
+<script type="text/javascript" src="js/swipe.min.js"></script>
+<script type="text/javascript">
+function callbean() {
+	alert("helloworld");
+	var bean = window.bean;
+	window.bean.setTitle('11111中文参数测试');
+	var title = bean.getTitle();
+	alert(title);
+}
+</script>
+</head>
+<body>
+	<div style="">
+	<div class="addWrap" style="margin:0px;">
+		<div class="swipe" id="mySwipe">
+			<div class="swipe-wrap">
+				<div><a href="javascript:;"><img class="img-responsive" src="images/1.jpg"/></a></div>
+				<div><a href="javascript:;"><img class="img-responsive" src="images/2.jpg"/></a></div>
+				<div><a href="javascript:;"><img class="img-responsive" src="images/3.jpg"/></a></div>
+				<div><a href="javascript:;"><img class="img-responsive" src="images/4.jpg"/></a></div>
+			</div>
+		</div>
+		<ul id="position">
+			<li class="cur"></li>
+			<li class=""></li>
+			<li class=""></li>
+			<li class=""></li>
+		</ul>
+	</div>
+	网页测试<br/>
+	<a href="#" onClick="callbean()">链接测试</a><br/>
+	<a href="#" onClick="window.bean.toPage('file:///android_asset/html/page.html')">应用页面</a><br/>
+	<a href="#" onClick="window.bean.toPage('http://sina.cn')">网络页面</a>
+	</div>
+	
+<script type="text/javascript">
+var bullets = document.getElementById('position').getElementsByTagName('li');
+var banner = Swipe(document.getElementById('mySwipe'), {
+	auto: 2000,
+	continuous: true,
+	disableScroll:false,
+	callback: function(pos) {
+		var i = bullets.length;
+		while (i--) {
+		  bullets[i].className = ' ';
+		}
+		bullets[pos].className = 'cur';
+	}
+});
+</script>
+</body>
+</html>

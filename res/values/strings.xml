@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">产品展示</string>
+    <string name="title_section1">热门</string>
+    <string name="title_section2">分类</string>
+    <string name="title_section3">服务</string>
+    <string name="action_settings">设置</string>
+    <string name="exit">退出</string>
+    <string name="page_back">返回</string>
+    <string name="exit_verify">再按一次退出程序</string>
+    <string name="checkVersion">已经是最新版本</string>
+    <string name="search_label">搜索</string>
+    <string name="search_hint">点击填写关键词</string>
+    <string name="settings_description">站内搜索</string>
+
+</resources>
