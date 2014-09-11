@@ -1,5 +1,6 @@
 package com.productshow;
 
+import java.net.URLEncoder;
 import java.util.Locale;
 
 import com.productshow.bean.JavaScriptInterfaceBean;
@@ -144,7 +145,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
 		int id = item.getItemId();
 		switch(id) {
 			case R.id.action_serach:
-				Toast.makeText(this, "action_serach", Toast.LENGTH_SHORT).show();
+//				Toast.makeText(this, "action_serach", Toast.LENGTH_SHORT).show();
 				onSearchRequested();
 				return true;
 			case R.id.action_settings:
@@ -337,7 +338,18 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
         //保存搜索记录
         SearchRecentSuggestions suggestions=new SearchRecentSuggestions(this, SearchSuggestionSampleProvider.AUTHORITY, SearchSuggestionSampleProvider.MODE);
         suggestions.saveRecentQuery(query, null);
-        Log.v("test","================================="+query);
+        if((query!=null) && (!query.equals(""))) {
+        	Intent resultIntent = new Intent();
+        	resultIntent.setClass(MainActivity.this,PageActivity.class);
+        	Bundle bundle = new Bundle();
+        	try {
+        		bundle.putString("url", "http://s.m.tmall.com/search.htm?sid=null&q="+URLEncoder.encode(query,"GBK"));
+        	} catch(Exception e) {
+        		e.printStackTrace();
+        	}
+        	resultIntent.putExtras(bundle);
+    		startActivity(resultIntent);
+        }
         /*
         if(Intent.ACTION_SEARCH.equals(intent.getAction())){
             //获取传递的数据
